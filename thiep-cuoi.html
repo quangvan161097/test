@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Thiệp Cưới Online</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            text-align: center;
+            background: linear-gradient(rgba(255,192,203,0.6), rgba(255,182,193,0.6)),
+                        url('https://images.unsplash.com/photo-1529634806980-85c3dd6d34ac');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+        }
+
+        .container {
+            padding: 50px 20px;
+            background: rgba(0,0,0,0.4);
+            min-height: 100vh;
+        }
+
+        h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 28px;
+            margin-top: 5px;
+        }
+
+        .names {
+            font-size: 36px;
+            margin: 30px 0;
+            font-weight: bold;
+            color: #ffd700;
+        }
+
+        .info {
+            font-size: 20px;
+            margin: 15px 0;
+        }
+
+        .countdown {
+            font-size: 24px;
+            margin-top: 30px;
+            background: rgba(255,255,255,0.2);
+            padding: 15px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+
+        .footer {
+            margin-top: 40px;
+            font-style: italic;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            border-radius: 8px;
+            background: #ff69b4;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #ff1493;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Trân Trọng Kính Mời</h1>
+    <h2>Đến tham dự lễ thành hôn của</h2>
+
+    <div class="names">
+        ❤️ Nguyễn Văn A <br> & <br> Trần Thị B ❤️
+    </div>
+
+    <div class="info">
+        🗓 Thời gian: 10:30 - Chủ Nhật, 20/04/2026
+    </div>
+
+    <div class="info">
+        📍 Địa điểm: Nhà hàng ABC, Gò Vấp, TP.HCM
+    </div>
+
+    <div class="countdown" id="countdown"></div>
+
+    <button onclick="alert('Cảm ơn bạn đã xác nhận tham dự ❤️')">
+        Xác nhận tham dự
+    </button>
+
+    <div class="footer">
+        Sự hiện diện của bạn là niềm vinh hạnh của gia đình chúng tôi!
+    </div>
+</div>
+
+<script>
+    const weddingDate = new Date("April 20, 2026 10:30:00").getTime();
+
+    const countdown = setInterval(function() {
+        const now = new Date().getTime();
+        const distance = weddingDate - now;
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+        document.getElementById("countdown").innerHTML =
+            "⏳ Còn " + days + " ngày " + hours + " giờ " + minutes + " phút nữa";
+
+        if (distance < 0) {
+            clearInterval(countdown);
+            document.getElementById("countdown").innerHTML = "🎉 Hôm nay là ngày cưới!";
+        }
+    }, 1000);
+</script>
+
+</body>
+</html>
